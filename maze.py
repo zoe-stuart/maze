@@ -38,18 +38,21 @@ player_vy = 0
 player_speed = .25
 
 # make walls
-wall1 =  [0, 2, 8, 1]
-wall2 =  [11, 2, 16, 1]
-wall3 =  [8, 2, 8, 1]
-wall4 =  [11, 2, 1, 8]
+wall1 =  [0, 2, 11, 1]
+wall2 =  [13, 2, 1, 7]
+wall3 =  [13, 2, 30, 1]
+wall4 =  [10, 2, 1, 7]
 wall5 =  [0, 37, 48, 1]
-wall6 =  [2, 9, 7, 1]
-wall7 =  [29, 2, 8, 1]
-wall8 =  [0, 12, 18, 1]
-wall9 =  [2, 5, 4, 1]
-wall10 = [2, 5, 1, 4]
+wall6 =  [2, 8, 9, 1]
+wall7 =  [34, 2, 1, 9]
+wall8 =  [0, 11, 40, 1]
+wall9 =  [2, 5, 5, 1]
+wall10 = [2, 5, 1, 3]
+wall11 = [0, 36, 48, 1]
+wall12 = [16, 5, 18, 1]
+wall13 = [13, 8, 18, 1]
 
-walls = [wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9, wall10]
+walls = [wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9, wall10, wall11, wall12, wall13]
 
 
 
