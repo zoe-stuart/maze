@@ -7,9 +7,11 @@ pygame.init()
 
 
 # Window
-WIDTH = 800
-HEIGHT = 600
-SIZE = (WIDTH, HEIGHT)
+scale = 15
+
+WIDTH = 50 
+HEIGHT = 37 
+SIZE = (WIDTH * scale, HEIGHT * scale)
 TITLE = "Maze"
 screen = pygame.display.set_mode(SIZE)
 pygame.display.set_caption(TITLE)
@@ -20,30 +22,41 @@ clock = pygame.time.Clock()
 refresh_rate = 60
 
 # Colors
-RED = (255, 0, 0)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
-GREEN = (0, 255, 0)
+LG = (156, 203, 79)
+MG = (97, 144, 16)
+DG = (48, 75, 7)
+VDG = (37, 61, 25)
 
 
 # Make a player
-player =  [200, 150, 25, 25]
+player =  [1, 1, 1, 1]
 player_vx = 0
 player_vy = 0
-player_speed = 5
+player_speed = .25
 
 # make walls
-wall1 =  [300, 275, 200, 25]
-wall2 =  [400, 450, 200, 25]
-wall3 =  [100, 100, 25, 200]
+wall1 =  [0, 2, 8, 1]
+wall2 =  [11, 2, 16, 1]
+wall3 =  [8, 2, 8, 1]
+wall4 =  [11, 2, 1, 8]
+wall5 =  [0, 37, 48, 1]
+wall6 =  [2, 9, 7, 1]
+wall7 =  [29, 2, 8, 1]
+wall8 =  [0, 12, 18, 1]
+wall9 =  [2, 5, 4, 1]
+wall10 = [2, 5, 1, 4]
 
-walls = [wall1, wall2, wall3]
+walls = [wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9, wall10]
+
+
 
 # Make coins
-coin1 = [300, 500, 25, 25]
-coin2 = [400, 200, 25, 25]
-coin3 = [150, 150, 25, 25]
+coin1 = [12, 20, .5, .5]
+coin2 = [16, 8, .5, .5]
+coin3 = [6, 6, .5, .5]
 
 coins = [coin1, coin2, coin3]
 
@@ -106,8 +119,22 @@ while not done:
 
 
     ''' here is where you should resolve player collisions with screen edges '''
+    top = player[1]
+    bottom = player[1] + player[3]
+    left = player[0]
+    right = player[0] + player[2]
 
 
+   
+    if left < 0:
+        player[0] = 0
+    elif right >= WIDTH:
+        player[0] = WIDTH - player[2]
+
+    if top < 0:
+        player[1] = 0
+    elif bottom >= HEIGHT:
+        player[1] = HEIGHT - player[3]
 
 
 
@@ -119,20 +146,22 @@ while not done:
 
         
     # Drawing code (Describe the picture. It isn't actually drawn yet.)
-    screen.fill(BLACK)
+    screen.fill(VDG)
 
-    pygame.draw.rect(screen, WHITE, player)
+    pygame.draw.rect(screen, WHITE, (player[0] * scale, player[1] * scale, player[2] * scale, player[3] * scale))
     
     for w in walls:
-        pygame.draw.rect(screen, RED, w)
+        pygame.draw.rect(screen, LG, (w[0] * scale, w[1] * scale, w[2] * scale, w[3] * scale))
 
     for c in coins:
-        pygame.draw.rect(screen, YELLOW, c)
+        pygame.draw.rect(screen, YELLOW, (c[0] * scale, c[1] * scale, c[2] * scale, c[3] * scale))
         
     if win:
-        font = pygame.font.Font(None, 48)
-        text = font.render("You Win!", 1, GREEN)
-        screen.blit(text, [400, 200])
+        font = pygame.font.Font(None, scale * 2)
+        text = font.render("You Win!", 1, YELLOW)
+        text_width = text.get_width()
+        text_height = text.get_height()
+        screen.blit(text, [WIDTH * scale / 2 - (text_width / 2), HEIGHT * scale / 2 - (text_height / 2)])
 
     
     # Update screen (Actually draw the picture in the window.)
