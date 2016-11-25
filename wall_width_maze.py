@@ -40,7 +40,7 @@ MG = (97, 144, 16)
 DG = (48, 75, 7)
 SG = (10, 99, 2)
 VDG = (37, 61, 25)
-LB = (26, 189, 239)
+CF = (26, 189, 239)
 
 F = None
 
@@ -79,17 +79,17 @@ maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG
 
 
 cup  = [[ F, F, F, G, G, G, G, G, G, G, F, F, F],
-        [ G, G, F, G,LB,LB,LB,LB,LB, G, F, G, G],
-        [ G, F, G, G,LB,LB,LB,LB,LB, G, G, F, G],
-        [ G, G, F, G,LB,LB,LB,LB,LB, G, F, G, G],
-        [ F, F, G, G, G,LB,LB,LB, G, G, G, F, F],
-        [ F, F, F, F, G, G,LB, G, G, F, F, F, F],
+        [ G, G, F, G,CF,CF,CF,CF,CF, G, F, G, G],
+        [ G, F, G, G,CF,CF,CF,CF,CF, G, G, F, G],
+        [ G, G, F, G,CF,CF,CF,CF,CF, G, F, G, G],
+        [ F, F, G, G, G,CF,CF,CF, G, G, G, F, F],
+        [ F, F, F, F, G, G,CF, G, G, F, F, F, F],
         [ F, F, F, F, F, G, G, G, F, F, F, F, F],
         [ F, F, F, F, F, F, G, F, F, F, F, F, F],
         [ F, F, F, F, F, F, G, F, F, F, F, F, F],
         [ F, F, F, F, F, F, G, F, F, F, F, F, F],
-        [ F, F, F, F, F, G,LB, G, F, F, F, F, F],
-        [ F, F, F, F, G,LB,LB,LB, G, F, F, F, F],
+        [ F, F, F, F, F, G,CF, G, F, F, F, F, F],
+        [ F, F, F, F, G,CF,CF,CF, G, F, F, F, F],
         [ F, F, F, G, G, G, G, G, G, G, F, F, F]]
 
 harry = [[F, F, F, B, B, B, B, B, B, B, B, F, F, F, F, F],
