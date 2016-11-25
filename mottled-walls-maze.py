@@ -36,7 +36,7 @@ Y = (255, 208, 0)
 S = (255, 246, 188)
 LH = (254, 255, 204)
 LG = (156, 203, 79)
-MG = (97, 144, 16)
+WL = (97, 144, 16)
 DG = (48, 75, 7)
 SG = (10, 99, 2)
 VDG = (37, 61, 25)
@@ -45,37 +45,37 @@ CF = (26, 189, 239)
 F = None
 
 
-maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG],
-        [ F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
-        [ F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
-        [MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG],
-        [MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG],
-        [MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG],
-        [MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG],
-        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F,MG],
-        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F,MG],
-        [MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG],
-        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG],
-        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG],
-        [MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG],
-        [MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
-        [MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
-        [MG, F, F,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG],
-        [MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
-        [MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
-        [MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
-        [MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG],
-        [MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG],
-        [MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG],
-        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
-        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
-        [MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG],
-        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG],
-        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG],
-        [MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
-        [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F],
-        [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F],
-        [MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG]]
+maze = [[WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL],
+        [ F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,WL, F, F, F, F, F, F, F, F, F, F, F, F, F, F,WL],
+        [ F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,WL, F, F, F, F, F, F, F, F, F, F, F, F, F, F,WL],
+        [WL, F, F,WL, F, F,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL, F, F,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL, F, F,WL],
+        [WL, F, F,WL, F, F,WL, F, F, F, F, F, F, F, F,WL, F, F, F, F, F, F, F, F,WL, F, F,WL, F, F,WL],
+        [WL, F, F,WL, F, F,WL, F, F, F, F, F, F, F, F,WL, F, F, F, F, F, F, F, F,WL, F, F,WL, F, F,WL],
+        [WL, F, F,WL,WL,WL,WL, F, F,WL,WL,WL,WL, F, F,WL,WL,WL,WL,WL,WL,WL, F, F,WL, F, F,WL,WL,WL,WL],
+        [WL, F, F, F, F, F,WL, F, F,WL, F, F, F, F, F, F, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F,WL],
+        [WL, F, F, F, F, F,WL, F, F,WL, F, F, F, F, F, F, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F,WL],
+        [WL,WL,WL,WL, F, F,WL, F, F,WL, F, F,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL, F, F,WL, F, F,WL],
+        [WL, F, F, F, F, F,WL, F, F,WL, F, F, F, F, F, F, F, F, F, F, F, F, F, F,WL, F, F, F, F, F,WL],
+        [WL, F, F, F, F, F,WL, F, F,WL, F, F, F, F, F, F, F, F, F, F, F, F, F, F,WL, F, F, F, F, F,WL],
+        [WL, F, F,WL,WL,WL,WL, F, F,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL, F, F,WL, F, F,WL,WL,WL,WL, F, F,WL],
+        [WL, F, F, F, F, F, F, F, F,WL, F, F,WL, F, F, F, F, F, F, F, F,WL, F, F,WL, F, F,WL, F, F,WL],
+        [WL, F, F, F, F, F, F, F, F,WL, F, F,WL, F, F, F, F, F, F, F, F,WL, F, F,WL, F, F,WL, F, F,WL],
+        [WL, F, F,WL,WL,WL,WL,WL,WL,WL, F, F,WL, F, F,WL,WL,WL,WL,WL,WL,WL, F, F,WL, F, F,WL, F, F,WL],
+        [WL, F, F,WL, F, F, F, F, F, F, F, F,WL, F, F,WL, F, F, F, F, F,WL, F, F,WL, F, F,WL, F, F,WL],
+        [WL, F, F,WL, F, F, F, F, F, F, F, F,WL, F, F,WL, F, F, F, F, F,WL, F, F,WL, F, F,WL, F, F,WL],
+        [WL, F, F,WL, F, F,WL,WL,WL,WL, F, F,WL, F, F,WL,WL,WL,WL, F, F,WL, F, F,WL, F, F,WL, F, F,WL],
+        [WL, F, F,WL, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F, F, F, F,WL, F, F,WL],
+        [WL, F, F,WL, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F, F, F, F,WL, F, F,WL],
+        [WL, F, F,WL,WL,WL,WL, F, F,WL, F, F,WL,WL,WL,WL, F, F,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL, F, F,WL],
+        [WL, F, F, F, F, F,WL, F, F,WL, F, F,WL, F, F,WL, F, F, F, F, F, F, F, F, F, F, F, F, F, F,WL],
+        [WL, F, F, F, F, F,WL, F, F,WL, F, F,WL, F, F,WL, F, F, F, F, F, F, F, F, F, F, F, F, F, F,WL],
+        [WL,WL,WL,WL, F, F,WL, F, F,WL, F, F,WL, F, F,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL],
+        [WL, F, F, F, F, F,WL, F, F,WL, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F,WL],
+        [WL, F, F, F, F, F,WL, F, F,WL, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F,WL],
+        [WL, F, F,WL,WL,WL,WL, F, F,WL, F, F,WL, F, F,WL, F, F,WL, F, F,WL, F, F,WL, F, F,WL, F, F,WL],
+        [WL, F, F, F, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F, F],
+        [WL, F, F, F, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F, F, F, F,WL, F, F, F],
+        [WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL,WL]]
 
 
 cup  = [[ F, F, F, G, G, G, G, G, G, G, F, F, F],
@@ -151,38 +151,43 @@ def initialize_cups():
     cup4 = [28, 4, c_size, c_size]
     
     return [cup1, cup2, cup3, cup4]
-    
+  
+#set walls
+mottled = []
+rows = []
+for i in (1, scale, 5):
+    for i in (1, scale, 5):
+        num = random.randint(0, 9)
+        colors = [(98, 244, 66), (92, 191, 70), (26, 112, 7), (36, 66, 29), (23, 130, 0), (46, 255, 0), (127, 224, 0), (108, 142, 62), (31, 102, 45), (0, 178, 35)] 
+        rows.append(colors[num])
+    mottled.append(rows)
+    rows = []
+  
+print mottled     
 
 def draw_pixel(screen, color, a, b, pixel_size):
     pygame.draw.rect(screen, color, [a, b, pixel_size, pixel_size])
 
+def draw_wall_pixel(screen, a, b, x, y, pixel_size, mottled):
+    a2 = a
+    for row in mottled:
+        for color in row:
+            draw_pixel(screen, color, a2, b, 10)
+            a2 += 5
+        b += 5
+        a2 = a
+    
 
-def draw_image(pixel_list, x, y, scale, pixel_size):
+def draw_image(pixel_list, x, y, scale, pixel_size, mottled):
 
     a = x * scale
     b = y * scale
     
     for row in pixel_list:
         for color in row:
-            if color != None:   
-                draw_pixel(screen, color, a, b, pixel_size)
-            a += pixel_size
-        b += pixel_size
-        a = x * scale
-  
-def draw_image2(pixel_list, x, y, scale, pixel_size, x_center, y_center):
-    
-    radius = 5 * scale
-
-    a = x * scale
-    b = y * scale
-    
-    a_center = x_center * scale
-    b_center = y_center * scale
-    
-    for row in pixel_list:
-        for color in row:
-            if color != None and abs(a - a_center) <= radius and abs(b - b_center) <= radius:   
+            if color == WL:
+                draw_wall_pixel(screen, a, b, x, y, pixel_size, mottled)
+            elif color != None:   
                 draw_pixel(screen, color, a, b, pixel_size)
             a += pixel_size
         b += pixel_size
@@ -299,15 +304,14 @@ while not done:
     screen.fill(VDG)
 
     
-    #draw_image(harry, player[0], player[1], scale, 2)
+    #draw_image(harry, player[0], player[1], scale, 2, mottled)
   
-    draw_image(maze, 0, 0, scale, scale)
-    #draw_image2(maze, 0, 0, scale, scale, player[0], player[1])
+    draw_image(maze, 0, 0, scale, scale, mottled)
    
-    draw_image(draco, player[0], player[1], scale, 2)
+    draw_image(draco, player[0], player[1], scale, 2, mottled)
 
     for c in cups:
-        draw_image(cup, c[0], c[1], scale, 3)
+        draw_image(cup, c[0], c[1], scale, 3, mottled)
     
         
     if win:
