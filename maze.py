@@ -10,10 +10,11 @@ pygame.init()
 
 # Window
 
-scale = 16
+scale = 25
 
-WIDTH = 51 
-HEIGHT = 36 
+
+WIDTH = 31
+HEIGHT = 31 
 SIZE = (WIDTH * scale, HEIGHT * scale)
 TITLE = "Triwizard Maze"
 screen = pygame.display.set_mode(SIZE)
@@ -24,44 +25,111 @@ clock = pygame.time.Clock()
 refresh_rate = 80
 
 # Colors
-T = (255, 255, 255)
+W = (255, 255, 255)
+G = (160, 164, 165)
+GD = (96, 96, 96)
 B = (0, 0, 0)
-Y = (255, 255, 0)
+BR = (91, 59, 0)
+R = (198, 0, 0)
+Y = (255, 208, 0)
+S = (255, 246, 188)
 LG = (156, 203, 79)
 MG = (97, 144, 16)
 DG = (48, 75, 7)
 VDG = (37, 61, 25)
+LB = (26, 189, 239)
 
 F = None
 
 
-maze = [[F, F, F, F, F, F, F, F, F],
-        [T, T, T, F, T, T, T, T, T],
-        [T, F, F, F, F, F, F, F, T],
-        [T, T, T, T, T, T, T, F, F]]
+maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG],
+        [ F, F, F, F, F, F, F, F, F, F, F, F,MG, F,MG, F,MG, F,MG, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG, F,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG],
+        [MG, F,MG, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG],
+        [MG, F,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG],
+        [MG, F,MG, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG, F,MG, F,MG, F, F, F, F, F,MG, F, F, F,MG],
+        [MG, F,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG, F,MG, F,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG],
+        [MG, F,MG, F, F, F,MG, F,MG, F,MG, F, F, F, F, F, F, F, F, F,MG, F, F, F,MG, F,MG, F,MG, F,MG],
+        [MG, F,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG, F,MG],
+        [MG, F, F, F,MG, F, F, F, F, F, F, F,MG, F, F, F,MG, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG],
+        [MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG],
+        [MG, F,MG, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F,MG, F, F, F, F, F,MG],
+        [MG, F,MG,MG,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG],
+        [MG, F, F, F, F, F,MG, F,MG, F, F, F,MG, F,MG, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG],
+        [MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG],
+        [MG, F,MG, F,MG, F, F, F,MG, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F,MG, F, F, F,MG],
+        [MG,MG,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG,MG,MG],
+        [MG, F,MG, F, F, F,MG, F,MG, F, F, F,MG, F,MG, F,MG, F, F, F,MG, F, F, F, F, F, F, F,MG, F,MG],
+        [MG, F,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG, F,MG, F,MG, F,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG],
+        [MG, F, F, F, F, F, F, F, F, F, F, F,MG, F,MG, F, F, F,MG, F,MG, F, F, F, F, F, F, F, F, F,MG],
+        [MG, F,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG],
+        [MG, F, F, F,MG, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F,MG, F, F, F,MG, F, F, F,MG],
+        [MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG, F,MG, F,MG],
+        [MG, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG, F,MG],
+        [MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG, F,MG],
+        [MG, F, F, F, F, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG, F, F, F, F, F,MG, F,MG, F,MG],
+        [MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG],
+        [MG, F, F, F,MG, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F,MG, F, F, F,MG],
+        [MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG],
+        [MG, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F],
+        [MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG]]
 
+cup  = [[ F, F, F, G, G, G, G, G, G, G, F, F, F],
+        [ G, G, F, G,LB,LB,LB,LB,LB, G, F, G, G],
+        [ G, F, G, G,LB,LB,LB,LB,LB, G, G, F, G],
+        [ G, G, F, G,LB,LB,LB,LB,LB, G, F, G, G],
+        [ F, F, G, G, G,LB,LB,LB, G, G, G, F, F],
+        [ F, F, F, F, G, G,LB, G, G, F, F, F, F],
+        [ F, F, F, F, F, G, G, G, F, F, F, F, F],
+        [ F, F, F, F, F, F, G, F, F, F, F, F, F],
+        [ F, F, F, F, F, F, G, F, F, F, F, F, F],
+        [ F, F, F, F, F, F, G, F, F, F, F, F, F],
+        [ F, F, F, F, F, G,LB, G, F, F, F, F, F],
+        [ F, F, F, F, G,LB,LB,LB, G, F, F, F, F],
+        [ F, F, F, G, G, G, G, G, G, G, F, F, F]]
+
+harry = [[F, F, F, B, B, B, B, B, B, B, B, F, F, F, F, F],
+         [F, F, B, B, B, B, B, B, B, B, B, B, F, F, F, F],
+         [F, B, B, B, B, B, B, B, B, B, B, B, B, F, F, F],
+         [F, B, B, B, B, S, S, S, S, S, B, B, B, F, F, F],
+         [F, B, B, B, S,GD,GD, S, S,GD,GD, B, B, F, F, F],
+         [F, B, B,GD,GD, W,DG,GD,GD, W,DG,GD, B, F, F, F],
+         [F, S, S, S, S,GD,GD, S, S,GD,GD, S, S, F, F, F],
+         [F, F, S, S, S, S, S, S, S, S, S, S, F, F, F, F],
+         [F, F, F, S, S, S, S, S, S, S, S, F, F, F, F,BR],
+         [F, F, B, R, Y, R, Y, R, Y, R, B, F, F, F, F,BR],
+         [F, B, B, Y, Y, R, Y, R, Y, R, B, B, F, F, F,BR],
+         [B, B, B, R, R, B, W, W, W, B, B, B, B, F, F,BR],
+         [B, B, B, Y, Y, B, B, B, B, B, Y, B, B, B, B, S],
+         [B, B, B, R, R, B, B, W, B, B, R, B, B, B, B,BR],
+         [B, B, B, Y, Y, B, W, W, W, B, B, B, F, B, B, F],
+         [S, S, B, B, B,GD,GD,GD,GD,GD, B, B, F, F, F, F],
+         [F, F, B, B,GD,GD,GD, B,GD,GD,GD, B, F, F, F, F],
+         [F, F, B, B,GD,GD, B, B, B,GD,GD, B, F, F, F, F],
+         [F, F, B, B,GD,GD, F, F, F,GD,GD, B, F, F, F, F]]
 
 
 # Make a player
-player =  [10, 10, .5, .5]
+player = [0, 1, 1, 1]
 player_vx = 0
 player_vy = 0
 player_speed = .25
 
 # Make coins
-coin1 = [25, 19, 2, 2]
-coin2 = [3, 6, 2, 2]
-coin3 = [39, 3, 2, 2]
-coin4 = [32, 3, 2, 2]
+c_size = 1
+cup1 = [23, 19, c_size, c_size]
+cup2 = [3, 6, c_size, c_size]
+cup3 = [21, 3, c_size, c_size]
+cup4 = [24, 3, c_size, c_size]
 
-coins = [coin1, coin2, coin3, coin4]
-
-
-def draw_pixel(screen, color, a, b, scale):
-    pygame.draw.rect(screen, color, [a, b, scale, scale])
+cups = [cup1, cup2, cup3, cup4]
 
 
-def draw_image(pixel_list, x, y, scale):
+def draw_pixel(screen, color, a, b, pixel_size):
+    pygame.draw.rect(screen, color, [a, b, pixel_size, pixel_size])
+
+
+def draw_image(pixel_list, x, y, scale, pixel_size):
 
     a = x * scale
     b = y * scale
@@ -69,18 +137,30 @@ def draw_image(pixel_list, x, y, scale):
     for row in pixel_list:
         for color in row:
             if color != None:   
-                draw_pixel(screen, color, a, b, scale)
-            a += scale
-        b += scale
+                draw_pixel(screen, color, a, b, pixel_size)
+            a += pixel_size
+        b += pixel_size
         a = x * scale
-        
-def debug(msg):
-    font = pygame.font.Font(None, scale * 2)
-    text = font.render(msg, 1, Y)
-    text_width = text.get_width()
-    text_height = text.get_height()
-    screen.blit(text, [WIDTH*scale - text_width, HEIGHT*scale - text_height])
-        
+  
+def draw_image2(pixel_list, x, y, scale, pixel_size, x_center, y_center):
+    
+    radius = 3 * scale
+
+    a = x * scale
+    b = y * scale
+    
+    a_center = x_center * scale
+    b_center = y_center * scale
+    
+    for row in pixel_list:
+        for color in row:
+            if color != None and abs(a - a_center) <= radius and abs(b - b_center) <= radius:   
+                draw_pixel(screen, color, a, b, pixel_size)
+            a += pixel_size
+        b += pixel_size
+        a = x * scale
+
+  
 # Game loop
 win = False
 done = False
@@ -114,8 +194,7 @@ while not done:
         player_vx = 0
 
         
-    # debug message:
-    message = ""
+ 
     
     # Game logic (Check for collisions, update points, etc.)
     ''' move the player horizontally'''
@@ -128,13 +207,12 @@ while not done:
             
             r = [col_index, row_index, 1, 1]
             
-            if intersects.rect_rect(player, r) and color == T:
+            if intersects.rect_rect(player, r) and color != F:
                 if player_vx > 0:
                     player[0] = r[0] - player[2]
-                    message = "OUCH! " + str(r[0]) + " " + str(r[1])
+                    
                 elif player_vx < 0:
                     player[0] = r[0] + r[2]
-                    message = "OUCH! " + str(r[0]) + " " + str(r[1])
                
              
     ''' move the player in vertical direction '''
@@ -147,14 +225,13 @@ while not done:
             
             r = [col_index, row_index, 1, 1]
             
-            if intersects.rect_rect(player, r) and color == T:
+            if intersects.rect_rect(player, r) and color != F:
                 if player_vy > 0:
                     player[1] = r[1] - player[3]
-                    message = "OUCH! " + str(r[0]) + " " + str(r[1])
+                    
                 elif player_vy < 0:
                     player[1] = r[1] + r[3]
-                    message = "OUCH! " + str(r[0]) + " " + str(r[1])
-               
+                    
                
                
     ''' here is where you should resolve player collisions with screen edges '''
@@ -177,40 +254,25 @@ while not done:
 
 
 
-    ''' get the coins '''
-    coins = [c for c in coins if not intersects.rect_rect(player, c)]
+    ''' get the cups '''
+    cups = [c for c in cups if not intersects.rect_rect(player, c)]
 
-    if len(coins) == 0:
+    if len(cups) == 0:
         win = True
 
         
     # Drawing code (Describe the picture. It isn't actually drawn yet.)
     screen.fill(VDG)
 
-    debug(message)
-
-    pygame.draw.rect(screen, Y, (player[0] * scale, player[1] * scale, player[2] * scale, player[3] * scale))
     
-    font = pygame.font.Font(None, scale * 2)
-    text = font.render("("+str(player[0])+","+str(player[1])+")", 1, Y)
-    text_width = text.get_width()
-    text_height = text.get_height()
-    screen.blit(text, [WIDTH * scale / 2 - (text_width / 2), HEIGHT * scale / 2 - (text_height / 2)])
-    
-    draw_image(maze, 0, 0, scale)
+    draw_image(harry, player[0], player[1], scale, 2)
+  
+    draw_image(maze, 0, 0, scale, scale)
+    '''draw_image2(maze, 0, 0, scale, scale, player[0], player[1])'''
    
-    for c in coins:
-        pygame.draw.rect(screen, Y, (c[0] * scale, c[1] * scale, c[2] * scale, c[3] * scale))
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+    for c in cups:
+        draw_image(cup, c[0], c[1], scale, 2)
+    
         
     if win:
         font = pygame.font.Font(None, scale * 2)
