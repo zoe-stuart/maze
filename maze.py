@@ -115,6 +115,10 @@ player_vx = 0
 player_vy = 0
 player_speed = .25
 
+#make exit
+
+end = [29, 29, 2, 2]
+
 # Make coins
 def initialize_cups():
     c_size = 1
@@ -266,7 +270,7 @@ while not done:
     
     cups = [c for c in cups if not intersects.rect_rect(player, c)]
 
-    if len(cups) == 0:
+    if len(cups) == 0 and intersects.rect_rect(player, end):
         win = True
 
         
@@ -289,7 +293,7 @@ while not done:
         text_width = text.get_width()
         text_height = text.get_height()
         screen.blit(text, [WIDTH * scale / 2 - (text_width / 2), HEIGHT * scale / 2 - (text_height / 2)])
-
+        
     
     # Update screen (Actually draw the picture in the window.)
     pygame.display.flip()
