@@ -26,6 +26,7 @@ refresh_rate = 80
 
 # Colors
 W = (255, 255, 255)
+GL = (219, 219, 219)
 G = (160, 164, 165)
 GD = (96, 96, 96)
 B = (0, 0, 0)
@@ -33,9 +34,11 @@ BR = (91, 59, 0)
 R = (198, 0, 0)
 Y = (255, 208, 0)
 S = (255, 246, 188)
+LH = (254, 255, 204)
 LG = (156, 203, 79)
 MG = (97, 144, 16)
 DG = (48, 75, 7)
+SG = (10, 99, 2)
 VDG = (37, 61, 25)
 LB = (26, 189, 239)
 
@@ -43,36 +46,37 @@ F = None
 
 
 maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG],
-        [ F, F, F, F, F, F, F, F, F, F, F, F,MG, F,MG, F,MG, F,MG, F, F, F, F, F, F, F, F, F, F, F,MG],
-        [MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG, F,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG],
-        [MG, F,MG, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG],
-        [MG, F,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG],
-        [MG, F,MG, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG, F,MG, F,MG, F, F, F, F, F,MG, F, F, F,MG],
-        [MG, F,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG, F,MG, F,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG],
-        [MG, F,MG, F, F, F,MG, F,MG, F,MG, F, F, F, F, F, F, F, F, F,MG, F, F, F,MG, F,MG, F,MG, F,MG],
-        [MG, F,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG, F,MG],
-        [MG, F, F, F,MG, F, F, F, F, F, F, F,MG, F, F, F,MG, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG],
-        [MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG],
-        [MG, F,MG, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F,MG, F, F, F, F, F,MG],
-        [MG, F,MG,MG,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG],
-        [MG, F, F, F, F, F,MG, F,MG, F, F, F,MG, F,MG, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG],
-        [MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG],
-        [MG, F,MG, F,MG, F, F, F,MG, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F,MG, F, F, F,MG],
-        [MG,MG,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG,MG,MG],
-        [MG, F,MG, F, F, F,MG, F,MG, F, F, F,MG, F,MG, F,MG, F, F, F,MG, F, F, F, F, F, F, F,MG, F,MG],
-        [MG, F,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG, F,MG, F,MG, F,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG],
-        [MG, F, F, F, F, F, F, F, F, F, F, F,MG, F,MG, F, F, F,MG, F,MG, F, F, F, F, F, F, F, F, F,MG],
-        [MG, F,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG],
-        [MG, F, F, F,MG, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F,MG, F, F, F,MG, F, F, F,MG],
-        [MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG, F,MG, F,MG],
-        [MG, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG, F,MG],
-        [MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG, F,MG],
-        [MG, F, F, F, F, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG, F, F, F, F, F,MG, F,MG, F,MG],
-        [MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG, F,MG,MG,MG, F,MG,MG,MG,MG,MG],
-        [MG, F, F, F,MG, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F,MG, F, F, F,MG],
-        [MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG],
-        [MG, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F],
+        [ F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [ F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG],
+        [MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F,MG],
+        [MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG],
+        [MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG],
+        [MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG],
+        [MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F],
+        [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F],
         [MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG]]
+
 
 cup  = [[ F, F, F, G, G, G, G, G, G, G, F, F, F],
         [ G, G, F, G,LB,LB,LB,LB,LB, G, F, G, G],
@@ -108,22 +112,46 @@ harry = [[F, F, F, B, B, B, B, B, B, B, B, F, F, F, F, F],
          [F, F, B, B,GD,GD, B, B, B,GD,GD, B, F, F, F, F],
          [F, F, B, B,GD,GD, F, F, F,GD,GD, B, F, F, F, F]]
 
+draco = [[F, F, F,LH,LH,LH,LH,LH,LH,LH,LH, F, F, F, F, F],
+         [F, F,LH,LH,LH,LH,LH,LH,LH,LH,LH,LH, F, F, F, F],
+         [F,LH,LH,LH,LH,LH,LH,LH,LH,LH,LH,LH,LH, F, F, F],
+         [F,LH,LH,LH,LH, S, S, S, S, S,LH,LH,LH, F, F, F],
+         [F,LH,LH,LH, S, S, S, S, S, S, S,LH,LH, F, F, F],
+         [F,LH,LH, S, S, W,GD, S, S, W,GD, S,LH, F, F, F],
+         [F, S, S, S, S, S, S, S, S, S, S, S, S, F, F, F],
+         [F, F, S, S, S, S, S, S, S, S, S, S, F, F, F, F],
+         [F, F, F, S, S, S, S, S, S, S, S, F, F, F, F,BR],
+         [F, F, B,SG,GL,SG,GL,SG,GL,SG, B, F, F, F, F,BR],
+         [F, B, B,GL,GL,SG,GL,SG,GL,SG, B, B, F, F, F,BR],
+         [B, B, B,SG,SG, B, W, W, W, B, B, B, B, F, F,BR],
+         [B, B, B,GL,GL, B, B, B, B, B,GL, B, B, B, B, S],
+         [B, B, B,SG,SG, B, B, W, B, B,SG, B, B, B, B,BR],
+         [B, B, B,GL,GL, B, W, W, W, B, B, B, F, B, B, F],
+         [S, S, B, B, B,GD,GD,GD,GD,GD, B, B, F, F, F, F],
+         [F, F, B, B,GD,GD,GD, B,GD,GD,GD, B, F, F, F, F],
+         [F, F, B, B,GD,GD, B, B, B,GD,GD, B, F, F, F, F],
+         [F, F, B, B,GD,GD, F, F, F,GD,GD, B, F, F, F, F]]
+
+
 
 # Make a player
-player = [0, 1, 1, 1]
+player_size = 2
+player = [0, 1, 1.5, 1.5]
+player2 = [0, 0, 1, 1]
 player_vx = 0
 player_vy = 0
 player_speed = .25
 
-# Make coins
-c_size = 1
-cup1 = [23, 19, c_size, c_size]
-cup2 = [3, 6, c_size, c_size]
-cup3 = [21, 3, c_size, c_size]
-cup4 = [24, 3, c_size, c_size]
-
-cups = [cup1, cup2, cup3, cup4]
-
+# Make cups
+def initialize_cups():
+    c_size = 1
+    cup1 = [4, 19, c_size, c_size]
+    cup2 = [29, 28, c_size, c_size]
+    cup3 = [16, 16, c_size, c_size]
+    cup4 = [28, 4, c_size, c_size]
+    
+    return [cup1, cup2, cup3, cup4]
+    
 
 def draw_pixel(screen, color, a, b, pixel_size):
     pygame.draw.rect(screen, color, [a, b, pixel_size, pixel_size])
@@ -144,7 +172,7 @@ def draw_image(pixel_list, x, y, scale, pixel_size):
   
 def draw_image2(pixel_list, x, y, scale, pixel_size, x_center, y_center):
     
-    radius = 3 * scale
+    radius = 5 * scale
 
     a = x * scale
     b = y * scale
@@ -159,6 +187,10 @@ def draw_image2(pixel_list, x, y, scale, pixel_size, x_center, y_center):
             a += pixel_size
         b += pixel_size
         a = x * scale
+
+cups = []
+
+cups = initialize_cups()
 
   
 # Game loop
@@ -178,7 +210,8 @@ while not done:
     down = pressed[pygame.K_DOWN]
     left = pressed[pygame.K_LEFT]
     right = pressed[pygame.K_RIGHT]
-
+    reset = pressed[pygame.K_r]
+    
     if up:
         player_vy = -player_speed
     elif down:
@@ -193,8 +226,9 @@ while not done:
     else:
         player_vx = 0
 
-        
- 
+    if reset:
+        cups = initialize_cups()
+        win = False
     
     # Game logic (Check for collisions, update points, etc.)
     ''' move the player horizontally'''
@@ -265,13 +299,15 @@ while not done:
     screen.fill(VDG)
 
     
-    draw_image(harry, player[0], player[1], scale, 2)
+    #draw_image(harry, player[0], player[1], scale, 2)
   
     draw_image(maze, 0, 0, scale, scale)
-    '''draw_image2(maze, 0, 0, scale, scale, player[0], player[1])'''
+    #draw_image2(maze, 0, 0, scale, scale, player[0], player[1])
    
+    draw_image(draco, player[0], player[1], scale, 2)
+
     for c in cups:
-        draw_image(cup, c[0], c[1], scale, 2)
+        draw_image(cup, c[0], c[1], scale, 3)
     
         
     if win:
