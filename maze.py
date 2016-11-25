@@ -116,13 +116,14 @@ player_vy = 0
 player_speed = .25
 
 # Make coins
-c_size = 1
-cup1 = [23, 19, c_size, c_size]
-cup2 = [3, 6, c_size, c_size]
-cup3 = [21, 3, c_size, c_size]
-cup4 = [24, 3, c_size, c_size]
-
-cups = [cup1, cup2, cup3, cup4]
+def initialize_cups():
+    c_size = 1
+    cup1 = [23, 19, c_size, c_size]
+    cup2 = [3, 6, c_size, c_size]
+    cup3 = [21, 3, c_size, c_size]
+    cup4 = [24, 3, c_size, c_size]
+    
+    return [cup1, cup2, cup3, cup4]
 
 
 def draw_pixel(screen, color, a, b, pixel_size):
@@ -160,6 +161,10 @@ def draw_image2(pixel_list, x, y, scale, pixel_size, x_center, y_center):
         b += pixel_size
         a = x * scale
 
+
+
+
+cups = initialize_cups()
   
 # Game loop
 win = False
@@ -178,6 +183,8 @@ while not done:
     down = pressed[pygame.K_DOWN]
     left = pressed[pygame.K_LEFT]
     right = pressed[pygame.K_RIGHT]
+    reset = pressed[pygame.K_r]
+
 
     if up:
         player_vy = -player_speed
@@ -193,8 +200,9 @@ while not done:
     else:
         player_vx = 0
 
-        
- 
+    if reset:
+        cups = initialize_cups()
+        win = False
     
     # Game logic (Check for collisions, update points, etc.)
     ''' move the player horizontally'''
@@ -255,6 +263,7 @@ while not done:
 
 
     ''' get the cups '''
+    
     cups = [c for c in cups if not intersects.rect_rect(player, c)]
 
     if len(cups) == 0:
