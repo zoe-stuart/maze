@@ -46,8 +46,8 @@ F = None
 
 
 maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG],
-        [ F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
-        [ F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
         [MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG],
         [MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG],
         [MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG],
@@ -73,8 +73,8 @@ maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG
         [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG],
         [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG],
         [MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
-        [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F],
-        [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F],
+        [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F,MG],
         [MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG]]
 
 
@@ -133,20 +133,25 @@ draco = [[F, F, F,LH,LH,LH,LH,LH,LH,LH,LH, F, F, F, F, F],
          [F, F, B, B,GD,GD, F, F, F,GD,GD, B, F, F, F, F]]
 
 
-
 # Make a player
-player_size = 2
-player = [0, 1, 1.5, 1.5]
-player2 = [0, 0, 1, 1]
-player_vx = 0
-player_vy = 0
-player_speed = .25
+player1_size = 2
+player1 = [1, 1, 1.5, 1.5]
+player1_vx = 0
+player1_vy = 0
+player1_speed = .20
+
+player2_size = 1
+player2 = [0, 0, .75, .75]
+player2_vx = 0
+player2_vy = 0
+player2_speed = .20
+
 
 # Make cups
 def initialize_cups():
-    c_size = 1
+    c_size = 2
     cup1 = [4, 19, c_size, c_size]
-    cup2 = [29, 28, c_size, c_size]
+    cup2 = [28, 28, c_size, c_size]
     cup3 = [16, 16, c_size, c_size]
     cup4 = [28, 4, c_size, c_size]
     
@@ -170,7 +175,7 @@ def draw_image(pixel_list, x, y, scale, pixel_size):
         b += pixel_size
         a = x * scale
   
-def draw_image2(pixel_list, x, y, scale, pixel_size, x_center, y_center):
+def spotlight(pixel_list, x, y, scale, pixel_size, x_center, y_center):
     
     radius = 5 * scale
 
@@ -188,8 +193,37 @@ def draw_image2(pixel_list, x, y, scale, pixel_size, x_center, y_center):
         b += pixel_size
         a = x * scale
 
-cups = []
+def zap(player2, cups, c_size, maze):
+    
+    player2_reach = [player2[0] - player2[2], player2[1] - player2[3], player2[2] * 3, player2[3] * 3]
+    
+    finished = False
+    
+    while finished == False:
+        new_x = random.randint(1, 30)
+        new_y = random.randint(1, 30)
+        print("have ints")
+        if maze[new_y][new_x] == F:
+            finished = True
+        else:
+            finished = False    
+    print("ints:" + str(new_x) + str(new_y))
+        
+    print(player2_reach)
+    for c in cups:
+        print(c)
+        if intersects.rect_rect(player2_reach, c):
+            print("Old: " + str(c[0]) + str(c[1]))
+            c = [new_x, new_y, c_size, c_size]
+            print("New: " + str(c[0]) + str(c[1]))
+    print cups
+    
+    '''ints exist, program does not change original cups, just makes a copy.'''
+    
+    return [c for c in cups]
+    print("zap!")
 
+cups = []
 cups = initialize_cups()
 
   
@@ -206,33 +240,59 @@ while not done:
             
     pressed = pygame.key.get_pressed()
 
-    up = pressed[pygame.K_UP]
-    down = pressed[pygame.K_DOWN]
-    left = pressed[pygame.K_LEFT]
-    right = pressed[pygame.K_RIGHT]
-    reset = pressed[pygame.K_r]
+    up1 = pressed[pygame.K_UP]
+    down1 = pressed[pygame.K_DOWN]
+    left1 = pressed[pygame.K_LEFT]
+    right1 = pressed[pygame.K_RIGHT]
     
-    if up:
-        player_vy = -player_speed
-    elif down:
-        player_vy = player_speed
+    up2 = pressed[pygame.K_w]
+    down2 = pressed[pygame.K_s]
+    left2 = pressed[pygame.K_a]
+    right2 = pressed[pygame.K_d]
+    
+    reset = pressed[pygame.K_r]
+    attempt = pressed[pygame.K_z]
+    
+    if up1:
+        player1_vy = -player1_speed
+    elif down1:
+        player1_vy = player1_speed
     else:
-        player_vy = 0
-        
-    if left:
-        player_vx = -player_speed
-    elif right:
-        player_vx = player_speed
+        player1_vy = 0       
+    if left1:
+        player1_vx = -player1_speed
+    elif right1:
+        player1_vx = player1_speed
     else:
-        player_vx = 0
+        player1_vx = 0
+
+    if up2:
+        player2_vy = -player2_speed
+    elif down2:
+        player2_vy = player2_speed
+    else:
+        player2_vy = 0       
+    if left2:
+        player2_vx = -player2_speed
+    elif right2:
+        player2_vx = player2_speed
+    else:
+        player2_vx = 0
+
 
     if reset:
         cups = initialize_cups()
         win = False
     
+    if attempt:
+        print("ZAP")
+        cups = zap(player2, cups, 1, maze)
+        print "back from zap"
+        
     # Game logic (Check for collisions, update points, etc.)
     ''' move the player horizontally'''
-    player[0] += player_vx
+    player1[0] += player1_vx
+    player2[0] += player2_vx
 
             
     '''resolve collisions horizontally'''
@@ -241,17 +301,22 @@ while not done:
             
             r = [col_index, row_index, 1, 1]
             
-            if intersects.rect_rect(player, r) and color != F:
-                if player_vx > 0:
-                    player[0] = r[0] - player[2]
+            if intersects.rect_rect(player1, r) and color != F:
+                if player1_vx > 0:
+                    player1[0] = r[0] - player1[2]           
+                elif player1_vx < 0:
+                    player1[0] = r[0] + r[2]
                     
-                elif player_vx < 0:
-                    player[0] = r[0] + r[2]
-               
-             
+            if intersects.rect_rect(player2, r) and color != MG:
+                if player2_vx > 0:
+                    player2[0] = r[0] - player2[2]              
+                elif player2_vx < 0:
+                    player2[0] = r[0] + r[2]
+                    
     ''' move the player in vertical direction '''
-    player[1] += player_vy
-    
+    player1[1] += player1_vy
+    player2[1] += player2_vy
+
     
     ''' resolve collisions vertically'''
     for row_index, row in enumerate(maze):
@@ -259,37 +324,49 @@ while not done:
             
             r = [col_index, row_index, 1, 1]
             
-            if intersects.rect_rect(player, r) and color != F:
-                if player_vy > 0:
-                    player[1] = r[1] - player[3]
+            if intersects.rect_rect(player1, r) and color != F:
+                if player1_vy > 0:
+                    player1[1] = r[1] - player1[3]            
+                elif player1_vy < 0:
+                    player1[1] = r[1] + r[3]
                     
-                elif player_vy < 0:
-                    player[1] = r[1] + r[3]
-                    
-               
+            if intersects.rect_rect(player2, r) and color != MG:
+                if player2_vy > 0:
+                    player2[1] = r[1] - player2[3]              
+                elif player2_vy < 0:
+                    player2[1] = r[1] + r[3]
+                       
                
     ''' here is where you should resolve player collisions with screen edges '''
-    top = player[1]
-    bottom = player[1] + player[3]
-    left = player[0]
-    right = player[0] + player[2]
+    top1 = player1[1]
+    bottom1 = player1[1] + player1[3]
+    left1 = player1[0]
+    right1 = player1[0] + player1[2]
+    if left1 < 0:
+        player1[0] = 0
+    elif right1 > WIDTH:
+        player1[0] = WIDTH - player1[2]
+    if top1 < 0:
+        player1[1] = 0
+    elif bottom1 > HEIGHT:
+        player1[1] = HEIGHT - player1[3]
 
-
-   
-    if left < 0:
-        player[0] = 0
-    elif right > WIDTH:
-        player[0] = WIDTH - player[2]
-
-    if top < 0:
-        player[1] = 0
-    elif bottom > HEIGHT:
-        player[1] = HEIGHT - player[3]
-
-
+    top2 = player2[1]
+    bottom2 = player2[1] + player2[3]
+    left2 = player2[0]
+    right2 = player2[0] + player2[2]
+    if left2 < 0:
+        player2[0] = 0
+    elif right2 > WIDTH:
+        player2[0] = WIDTH - player2[2]
+    if top2 < 0:
+        player2[1] = 0
+    elif bottom2 > HEIGHT:
+        player2[1] = HEIGHT - player2[3]
 
     ''' get the cups '''
-    cups = [c for c in cups if not intersects.rect_rect(player, c)]
+    cups = [c for c in cups if not intersects.rect_rect(player1, c)]
+
 
     if len(cups) == 0:
         win = True
@@ -299,17 +376,16 @@ while not done:
     screen.fill(VDG)
 
     
-    #draw_image(harry, player[0], player[1], scale, 2)
+    draw_image(harry, player1[0], player1[1], scale, player1_size)
   
     draw_image(maze, 0, 0, scale, scale)
-    #draw_image2(maze, 0, 0, scale, scale, player[0], player[1])
+    #spotlight(maze, 0, 0, scale, scale, player1[0], player1[1])
    
-    draw_image(draco, player[0], player[1], scale, 2)
+    draw_image(draco, player2[0], player2[1], scale, player2_size)
 
     for c in cups:
         draw_image(cup, c[0], c[1], scale, 3)
     
-        
     if win:
         font = pygame.font.Font(None, scale * 2)
         text = font.render("You Win!", 1, Y)
