@@ -193,34 +193,30 @@ def spotlight(pixel_list, x, y, scale, pixel_size, x_center, y_center):
         b += pixel_size
         a = x * scale
 
-def zap(player2, cups, c_size, maze):
+'''def zap(player2, cups, c_size, maze):
     
     player2_reach = [player2[0] - player2[2], player2[1] - player2[3], player2[2] * 3, player2[3] * 3]
-    
-    finished = False
-    while finished == False:
-        new_x = random.randint(1, 30)
-        new_y = random.randint(1, 30)
-        print("have ints")
-        if maze[new_y][new_x] == F:
-            finished = True
-        else:
-            finished = False    
-    print("ints:" + str(new_x) + str(new_y))
         
     print(player2_reach)
     for c in cups:
-        print(c)
-        if intersects.rect_rect(player2_reach, c):
-            print("Old: " + str(c[0]) + str(c[1]))
-            c = [new_x, new_y, c_size, c_size]
-            print("New: " + str(c[0]) + str(c[1]))
-    print(cups)
     
-    '''ints exist, program does not change original cups, just makes a copy.'''
+        finished = False
+        while finished == False:
+            new_x = random.randint(1, 30)
+            new_y = random.randint(1, 30)
+            print("have ints")
+            if maze[new_y][new_x] == F:
+                finished = True
+            else:
+                finished = False   
+
+        if intersects.rect_rect(player2_reach, c):
+            c = [new_x, new_y, c_size, c_size]
+    
+    #ints exist, program does not change original cups, just makes a copy.
     
     return [c for c in cups]
-    print("zap!")
+    print("zap!")'''
 
 cups = []
 cups = initialize_cups()
@@ -283,10 +279,10 @@ while not done:
         cups = initialize_cups()
         win = False
     
-    if attempt:
+    '''if attempt:
         print("ZAP")
         cups = zap(player2, cups, 1, maze)
-        print("back from zap")
+        print("back from zap")'''
         
     # Game logic (Check for collisions, update points, etc.)
     ''' move the player horizontally'''
