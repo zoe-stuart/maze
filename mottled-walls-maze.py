@@ -155,15 +155,14 @@ def initialize_cups():
 #set walls
 mottled = []
 rows = []
-for i in (1, scale, 5):
-    for i in (1, scale, 5):
+for i in range(0, 5):
+    for i in range(0, 5):
         num = random.randint(0, 9)
         colors = [(98, 244, 66), (92, 191, 70), (26, 112, 7), (36, 66, 29), (23, 130, 0), (46, 255, 0), (127, 224, 0), (108, 142, 62), (31, 102, 45), (0, 178, 35)] 
         rows.append(colors[num])
     mottled.append(rows)
     rows = []
-  
-print mottled     
+      
 
 def draw_pixel(screen, color, a, b, pixel_size):
     pygame.draw.rect(screen, color, [a, b, pixel_size, pixel_size])
@@ -172,7 +171,7 @@ def draw_wall_pixel(screen, a, b, x, y, pixel_size, mottled):
     a2 = a
     for row in mottled:
         for color in row:
-            draw_pixel(screen, color, a2, b, 10)
+            draw_pixel(screen, color, a2, b, 5)
             a2 += 5
         b += 5
         a2 = a
