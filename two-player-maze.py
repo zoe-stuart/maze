@@ -198,7 +198,6 @@ def zap(player2, cups, c_size, maze):
     player2_reach = [player2[0] - player2[2], player2[1] - player2[3], player2[2] * 3, player2[3] * 3]
     
     finished = False
-    
     while finished == False:
         new_x = random.randint(1, 30)
         new_y = random.randint(1, 30)
@@ -216,7 +215,7 @@ def zap(player2, cups, c_size, maze):
             print("Old: " + str(c[0]) + str(c[1]))
             c = [new_x, new_y, c_size, c_size]
             print("New: " + str(c[0]) + str(c[1]))
-    print cups
+    print(cups)
     
     '''ints exist, program does not change original cups, just makes a copy.'''
     
@@ -287,7 +286,7 @@ while not done:
     if attempt:
         print("ZAP")
         cups = zap(player2, cups, 1, maze)
-        print "back from zap"
+        print("back from zap")
         
     # Game logic (Check for collisions, update points, etc.)
     ''' move the player horizontally'''
