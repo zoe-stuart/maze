@@ -42,7 +42,7 @@ LB = (26, 189, 239)
 F = None
 
 
-maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG],
+'''maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG],
         [ F, F, F, F, F, F, F, F, F, F, F, F,MG, F,MG, F,MG, F,MG, F, F, F, F, F, F, F, F, F, F, F,MG],
         [MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG, F,MG, F,MG, F,MG,MG,MG,MG,MG, F,MG,MG,MG,MG,MG, F,MG],
         [MG, F,MG, F, F, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG, F, F, F,MG, F, F, F, F, F,MG, F,MG],
@@ -72,9 +72,42 @@ maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG
         [MG, F, F, F,MG, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F,MG, F, F, F,MG],
         [MG,MG,MG, F,MG, F,MG,MG,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG,MG,MG,MG,MG, F,MG,MG,MG, F,MG,MG,MG],
         [MG, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F],
+        [MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG]]'''
+
+maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG],
+        [MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG],
+        [MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F,MG],
+        [MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG],
+        [MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG],
+        [MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F, F, F, F,MG, F, F,MG],
+        [MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG,MG,MG,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F, F, F, F, F, F, F, F, F, F,MG],
+        [MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG],
+        [MG, F, F, F, F, F,MG, F, F,MG, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG],
+        [MG, F, F,MG,MG,MG,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F,MG],
+        [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F,MG],
         [MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG]]
 
-cup  = [[ F, F, F, G, G, G, G, G, G, G, F, F, F],
+
+cup  = [[F, F, F, G, G, G, G, G, G, G, F, F, F],
         [ G, G, F, G,LB,LB,LB,LB,LB, G, F, G, G],
         [ G, F, G, G,LB,LB,LB,LB,LB, G, G, F, G],
         [ G, G, F, G,LB,LB,LB,LB,LB, G, F, G, G],
@@ -110,7 +143,7 @@ harry = [[F, F, F, B, B, B, B, B, B, B, B, F, F, F, F, F],
 
 
 # Make a player
-player = [0, 1, 1, 1]
+player = [2, 1, 1.5, 1.5]
 player_vx = 0
 player_vy = 0
 player_speed = .25
