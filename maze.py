@@ -9,9 +9,7 @@ pygame.init()
 
 
 # Window
-
 scale = 25
-
 
 WIDTH = 31
 HEIGHT = 31 
@@ -77,7 +75,7 @@ maze = [[MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG
         [MG, F, F, F, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F, F, F,MG, F, F, F],
         [MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG,MG]]
 
-cup  = [[F, F, F, G, G, G, G, G, G, G, F, F, F],
+cup  =  [[F, F, F, G, G, G, G, G, G, G, F, F, F],
         [ G, G, F, G,LB,LB,LB,LB,LB, G, F, G, G],
         [ G, F, G, G,LB,LB,LB,LB,LB, G, G, F, G],
         [ G, G, F, G,LB,LB,LB,LB,LB, G, F, G, G],
@@ -178,9 +176,6 @@ player_vx = 0
 player_vy = 0
 player_speed = .25
 
-#make exit
-end = [28, 28, 2, 2]
-
 def draw_pixel(screen, color, a, b, pixel_size):
     pygame.draw.rect(screen, color, [a, b, pixel_size, pixel_size])
 
@@ -222,18 +217,20 @@ PLAYING = 1
 END = 2
 
 def setup():
-    global player, stage, cups
+    global player, stage, cups, score, time_remaining, ticks
     
     c_size = 2
     cup1 = [4, 19, c_size, c_size]
-    cup2 = [28, 28, c_size, c_size]
+    cup2 = [25, 25, c_size, c_size]
     cup3 = [16, 16, c_size, c_size]
     cup4 = [28, 4, c_size, c_size]
-    
     cups = [cup1, cup2, cup3, cup4]
-
+    
+    score = 0
     player = [2, 1, 1.5, 1.5]
     stage = START
+    time_remaining = 30
+    ticks = 0
 
 wizard = harry
 alt1 = krum
@@ -244,6 +241,7 @@ alt3 = cedric
 big_font = pygame.font.Font(None, scale * 2)
 small_font = pygame.font.Font(None, scale)
 score = 0
+win = False
 setup()
 done = False
 
@@ -306,6 +304,7 @@ while not done:
             player_vx = 0
 
     # Game logic (Check for collisions, update points, etc.)
+    
     if stage == PLAYING:
         ''' move the player horizontally'''
         player[0] += player_vx
@@ -342,9 +341,12 @@ while not done:
         bottom = player[1] + player[3]
         left = player[0]
         right = player[0] + player[2]
+        leave = False
 
         if left < 0:
             player[0] = 0
+        elif right > WIDTH and top > 28:
+            leave = True
         elif right > WIDTH:
             player[0] = WIDTH - player[2]
 
@@ -353,6 +355,17 @@ while not done:
         elif bottom > HEIGHT:
             player[1] = HEIGHT - player[3]
 
+        '''timer stuff'''
+        ticks += 1
+
+        if ticks % refresh_rate == 0:
+            time_remaining -= 1
+
+        if time_remaining == 0:
+            stage = END
+        ''' and other stuff could happen here too '''
+
+            
         ''' get the cups '''        
         #coins = [c for c in coins if not intersects.rect_rect(player, c)]
          
@@ -363,13 +376,13 @@ while not done:
             score += 1
             print("sound!")
             
-        if len(cups) == 0 and intersects.rect_rect(player, end):
+        if len(cups) == 0 and leave:
+            win = True 
+
+        if win:
             stage = END
-
-
     # Drawing code (Describe the picture. It isn't actually drawn yet.)
     screen.fill(VDG) 
-
 
     if stage == START:
         text1 = big_font.render("WELCOME TO THE TRIWIZARD MAZE!", True, Y)
@@ -403,7 +416,10 @@ while not done:
         screen.blit(text, [28 * scale, 0]) 
             
     if stage == END:
-        text1 = big_font.render("You Win!", True, Y)
+        if win:
+            text1 = big_font.render("You Win!", True, Y)
+        else:
+            text1 = big_font.render("You Lose!", True, R)
         text2 = small_font.render("press space to reset", True, MG)
         text_width1 = text1.get_width()
         text_width2 = text2.get_width()
@@ -415,7 +431,14 @@ while not done:
         draw_image(wizard, 12.3, 4, scale, 10)
         draw_image(cup, 2, 4, scale, 10)
         draw_image(cup, 23.8, 4, scale, 10)
+        draw_image(alt1, 2, 20, scale, 10)
+        draw_image(alt2, 12.3, 20, scale, 10)
+        draw_image(alt3, 23.8, 20, scale, 10)
 
+    ''' timer text '''
+    timer_text = small_font.render("Time: " + str(time_remaining), True, Y)
+    screen.blit(timer_text, [1, 1])
+    
     
     # Update screen (Actually draw the picture in the window.)
     pygame.display.flip()
